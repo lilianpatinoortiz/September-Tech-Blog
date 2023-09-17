@@ -1,6 +1,27 @@
 const router = require("express").Router();
-const { Post } = require("../../models");
+const { Post, Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
+
+//withAuth
+router.get("/", async (req, res) => {
+  // find all posts
+  Post.findAll({
+    include: {
+      model: Comment, // includes its associated Comments
+      attributes: ["id", "description", "date_created"],
+    },
+  })
+    .then((data) => {
+      if (!data) {
+        res.status(404).json({ message: "There are no posts." });
+        return;
+      }
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
 router.post("/", withAuth, async (req, res) => {
   try {
@@ -17,7 +38,7 @@ router.post("/", withAuth, async (req, res) => {
 
 router.delete("/:id", withAuth, async (req, res) => {
   try {
-    const postData = await Project.destroy({
+    const postData = await Post.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
