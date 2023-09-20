@@ -46,6 +46,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  // create post
   try {
     const newPost = await Post.create({
       ...req.body,
@@ -59,6 +60,7 @@ router.post("/", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
+  // update post
   try {
     const postData = await Post.update(req.body, {
       where: {
