@@ -1,0 +1,35 @@
+<div class="row mb-4 create-post">
+  <div class="col-md-12">
+    <h6> ~ My posts ~ </h6>
+  </div>
+</div>
+<!-- Loop over each object in the posts array from the user -->
+{{#each posts as |post|}}
+  <div class="row mb-4 project">
+    <div class="col-md-12">
+      <div class="row mb-4 project-header">
+        <div class="col-md-9">
+          <h2>
+            <a href="/posts/{{post.id}}">{{post.name}}</a>
+          </h2>
+        </div>
+        <div class="col-md-3">
+          <p>Posted on
+            {{format_date post.date_created}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <p>
+        {{post.description}}
+      </p>
+    </div>
+  </div>
+{{/each}}
+<div class="row mb-4 create-post">
+  <div class="col-md-12">
+    <button class="btn btn-light" type="submit">
+      <a href="/newpost">Create post</a>
+    </button>
+  </div>
+</div>
