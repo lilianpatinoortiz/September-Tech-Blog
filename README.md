@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### ~ Object-Relational Mapping (ORM) Challenge: E-commerce Back End 📝
+### ~ Model-View-Controller (MVC) Challenge: Tech Blog 📝
 
 ## Description
 
