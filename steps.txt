@@ -1,0 +1,5 @@
+1. npm install
+2. mysql -u rooot -p
+3. > source db/schema.sql 
+4. npm run seed
+5. npm start 
