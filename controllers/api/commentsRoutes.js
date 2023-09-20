@@ -1,16 +1,11 @@
 const router = require("express").Router();
-const { Post, Comment } = require("../../models");
+const { Comment } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // TODO: ADD withAuth TO ALL CALLS. EX: router.post("/", withAuth, async (req, res) => {
 router.get("/", async (req, res) => {
-  // find all posts
-  Post.findAll({
-    include: {
-      model: Comment, // includes its associated Comments
-      attributes: ["id", "description", "date_created"],
-    },
-  })
+  // find all comments
+  Comment.findAll()
     .then((data) => {
       if (!data) {
         res.status(404).json({ message: "There are no posts." });
@@ -24,74 +19,69 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  // find one post
+  // find one comment
   try {
-    const postData = await Post.findOne({
+    const commentData = await Comment.findOne({
       where: {
         id: req.params.id,
       },
-      include: {
-        model: Comment, // includes its associated Comments
-        attributes: ["id", "description", "date_created"],
-      },
     });
-    if (!postData) {
-      res.status(404).json({ message: "No post found with this id!" });
+    if (!commentData) {
+      res.status(404).json({ message: "No comment found with this id!" });
       return;
     }
-    res.status(200).json(postData);
+    res.status(200).json(commentData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 router.post("/", async (req, res) => {
-  // create post
+  // create comment
   try {
-    const newPost = await Post.create({
+    const newComment = await Comment.create({
       ...req.body,
-      user_id: req.session.user_id,
     });
 
-    res.status(200).json(newPost);
+    res.status(200).json(newComment);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
 router.put("/:id", async (req, res) => {
-  // update post
+  // update comment
   try {
-    const postData = await Post.update(req.body, {
+    const newComment = await Comment.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
-    if (!postData) {
+    if (!newComment) {
       res.status(404).json({ message: "No post found with this id!" });
       return;
     }
-    res.status(200).json(postData);
+    res.status(200).json(newComment);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 router.delete("/:id", async (req, res) => {
-  // delete post
+  // delete comment
   try {
-    const postData = await Post.destroy({
+    const newComment = await Comment.destroy({
       where: {
         id: req.params.id,
       },
     });
 
-    if (!postData) {
+    if (!newComment) {
       res.status(404).json({ message: "No post found with this id!" });
       return;
     }
 
-    res.status(200).json(postData);
+    res.status(200).json(newComment);
   } catch (err) {
     res.status(500).json(err);
   }
