@@ -56,3 +56,13 @@ header {
 .comment-form {
   text-align: left;
 }
+
+footer {
+  width: 100%;
+  bottom: 0;
+  padding: 20px;
+  text-align: center;
+  color: lightsteelblue;
+  margin-top: auto;
+  position: absolute;
+}
