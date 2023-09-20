@@ -1,5 +1,6 @@
-header, .project:not(:last-child) {
-  border-bottom: 1px solid #ccc;
+header,
+.project:not(:last-child) {
+  /*border-bottom: 1px solid #ccc;*/
 }
 
 .no-button {
@@ -21,4 +22,32 @@ header, .project:not(:last-child) {
   color: #056605;
   font-weight: bold;
   margin-left: -5px;
+}
+
+.project {
+  border: 3px solid #8080803d;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.project:hover {
+  background-color: antiquewhite;
+}
+
+header {
+  background-color: antiquewhite;
+}
+
+.create-post {
+  text-align: center;
+}
+
+.btn-primary {
+  cursor: pointer;
+}
+
+.comment {
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  color: gray;
 }

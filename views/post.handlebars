@@ -1,0 +1,22 @@
+<div class="text-center">
+  <h2>{{name}}</h2>
+  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <p style="font-style: italic;">{{description}}</p>
+  <hr />
+  <!-- Loop over each object in the posts array from the user -->
+  {{#each comments as |comment|}}
+    <div class="row mb-4 comment">
+      <div class="col-md-12">
+        <div>
+          <p>{{comment.description}}</p>
+          <p>~ {{comment.user.name}}, {{format_date comment.date_created}}</p>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  {{#if logged_in}}
+    <p>
+      <button class="btn btn-primary">Comment this post</button>
+    </p>
+  {{/if}}
+</div>

@@ -1,11 +1,16 @@
 const router = require("express").Router();
-const { Comment } = require("../../models");
+const { Comment, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 // TODO: ADD withAuth TO ALL CALLS. EX: router.post("/", withAuth, async (req, res) => {
 router.get("/", async (req, res) => {
   // find all comments
-  Comment.findAll()
+  Comment.findAll({
+    include: {
+      model: User, // includes its associated User
+      attributes: ["name"],
+    },
+  })
     .then((data) => {
       if (!data) {
         res.status(404).json({ message: "There are no posts." });
@@ -24,6 +29,10 @@ router.get("/:id", async (req, res) => {
     const commentData = await Comment.findOne({
       where: {
         id: req.params.id,
+      },
+      include: {
+        model: User, // includes its associated User
+        attributes: ["name"],
       },
     });
     if (!commentData) {
