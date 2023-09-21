@@ -2,7 +2,6 @@ const router = require("express").Router();
 const { Comment, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
-// TODO: ADD withAuth TO ALL CALLS. EX: router.post("/", withAuth, async (req, res) => {
 router.get("/", async (req, res) => {
   // find all comments
   Comment.findAll({
@@ -45,7 +44,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   // create comment
   try {
     const newComment = await Comment.create({
@@ -59,7 +58,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   // update comment
   try {
     const newComment = await Comment.update(req.body, {
@@ -77,7 +76,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   // delete comment
   try {
     const newComment = await Comment.destroy({
