@@ -8,11 +8,11 @@
 
 Motivation:
 
--
+- Its always useful to know how to develop an end to end application using the MVC pattern.
 
 Why this project was created:
 
--
+- To allow users to post tech posts so people can learn about the latest news/technologies and comment on the posts to interact with each other.
 
 What are we solving:
 
