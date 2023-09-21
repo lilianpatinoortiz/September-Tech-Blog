@@ -15,10 +15,14 @@
     </div>
   {{/each}}
   {{#if logged_in}}
-    <form class="form comment-form">
+    <form class="form comment-form" data-id="{{id}}">
       <div class="form-group">
         <label for="comment">Comment:</label>
-        <input class="form-input" type="text" id="description" />
+        <input
+          class="form-input description-input"
+          type="text"
+          id="description"
+        />
       </div>
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Submit!</button>
@@ -27,4 +31,4 @@
   {{/if}}
 </div>
 
-<script src="./js/newcomment.js" type="text/javascript"></script>
+<script src="/js/newcomment.js"></script>
