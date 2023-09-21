@@ -108,6 +108,32 @@ router.get("/newpost", withAuth, async (req, res) => {
   }
 });
 
+router.get("/editpost/:id", withAuth, async (req, res) => {
+  const postData = await Post.findByPk(req.params.id, {
+    include: [
+      {
+        model: User,
+        attributes: ["name"],
+      },
+      {
+        model: Comment,
+        attributes: ["id", "description", "date_created"],
+        include: {
+          model: User,
+          attributes: ["name"],
+        },
+      },
+    ],
+  });
+
+  const post = postData.get({ plain: true });
+
+  res.render("editpost", {
+    ...post,
+    logged_in: req.session.logged_in,
+  });
+});
+
 router.get("/posts/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
