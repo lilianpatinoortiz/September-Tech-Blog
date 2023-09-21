@@ -16,7 +16,7 @@ Why this project was created:
 
 What are we solving:
 
--
+- We are developing an application that allows the users to get more familiarized with the MVC pattern.
 
 What we learned / used:
 
@@ -46,6 +46,11 @@ ROUTES
   - `Update`
   - `Destroy`
 
+INTERFACE
+
+- `Express Handlebars`
+- `Javascript`
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -61,7 +66,7 @@ ROUTES
 To run the project in your local machine:
 
 1. Open visual studio in your computer or laptop
-2. Clone the git project: https://github.com/lilianpatinoortiz/Summer-E-Commerce
+2. Clone the git project: https://github.com/lilianpatinoortiz/September-Tech-Blog
 3. Pull the latest from the 'main' branch
 4. Open a new terminal and type `npm install` to install the dependencies
 5. Run the following commands in this order:
@@ -74,13 +79,13 @@ To run the project in your local machine:
 
 ## Usage
 
-Video of the app: https://drive.google.com/file/d/1_aSADEg54MegR7Gfjo24fZJjLTyLXGLa/view?usp=sharing
+Deployed app: https://nameless-depths-17502-c11f74afb9ee.herokuapp.com/
 
 ## Testing
 
 This challenge does not contain specific test files, but below you can find a gif with the flow of the challenge functioning correctly.
 
-![test](assets/img/gif.gif)
+![test](public/assets/img/gif.gif)
 
 ## Contributing
 
